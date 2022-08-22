@@ -26,7 +26,7 @@ const App = (props) => {
         <Routes>
 
         <Route path="/" element={<Home data={data1}/>} />
-            <Route path="/listeProduits" element={<ListeProduits data={data2} />} />
+            {/* <Route path="/listeProduits" element={<ListeProduits data={data2} />} /> */}
             {/* <Route path="/Souscategories/:id" element={<Souscategories data={data2} onClick={handleClickSsCategorie} />} />
             <Route path="/Produits/:id" element={<Produits data={data3}/>} onClick={handleClickProduit} />
             <Route path="/Details/:id" element={<Details data={data4}/>} />
