@@ -1,0 +1,23 @@
+{
+  "name": "vgdesktop",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/emilieturmine/VGDesktop.git",
+  "author": "emilieturmine <emilie.turmine@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "parcel": "^2.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
+  }
+}
