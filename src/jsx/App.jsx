@@ -4,7 +4,8 @@ import '../css/index.css';import {Home} from '../pages/Home';
 import { fetchSync } from './fetchSync';
 import { useState, useEffect } from 'react';
 import React from 'react';
-
+import { ListeProduits } from '../pages/gestionProduits/ListeProduits';
+import { Formulaire } from '../pages/gestionProduits/Formulaire';
 const App = (props) => {
 
     const [data1, setData1] = useState([]);
@@ -17,7 +18,12 @@ const App = (props) => {
        
     }, [])
     
-    
+    const handleChange = (produit) => {
+        fetchSync('https://127.0.0.1:8000/api/produits', 'post', produit).then( () => {
+            fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData2(data) );
+        });
+    }
+
     
     
     return (
@@ -26,8 +32,9 @@ const App = (props) => {
         <Routes>
 
         <Route path="/" element={<Home data={data1}/>} />
-            {/* <Route path="/listeProduits" element={<ListeProduits data={data2} />} /> */}
-            {/* <Route path="/Souscategories/:id" element={<Souscategories data={data2} onClick={handleClickSsCategorie} />} />
+            <Route path="gestionProduits/" element={<ListeProduits data={data2} />} />
+                <Route path="gestionProduits/add" element={<Formulaire onChange={handleChange} />} />
+           {/* <Route path="/Souscategories/:id" element={<Souscategories data={data2} onClick={handleClickSsCategorie} />} />
             <Route path="/Produits/:id" element={<Produits data={data3}/>} onClick={handleClickProduit} />
             <Route path="/Details/:id" element={<Details data={data4}/>} />
             <Route path="/Marques" element={<Marques data={data5}/>} />

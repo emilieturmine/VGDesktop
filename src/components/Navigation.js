@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Navigation = () => {
     return (
 
-        <nav class="nav flex-column">
+        <nav className="navbar navbar-expand-lg navbar-light" id="Navigation">
             <li className="nav-link active" aria-current="page">
-                {/* <Link style={{ color: 'white' }} to="/"> */}
-                Acceuil
-                {/* </Link> */}
+                <Link style={{ color: 'Dark' }} to="/">
+                    Acceuil
+                </Link>
             </li>
             <li className="nav-link">
                 {/* <Link style={{ color: 'white' }} to="/GestionCommandes"> */}
@@ -16,9 +16,9 @@ const Navigation = () => {
                 {/* </Link> */}
             </li>
             <li className="nav-link">
-                {/* <Link style={{ color: 'white' }} to="/GestionCatalogue"> */}
-                Catalogue
-                {/* </Link> */}
+                <Link style={{ color: 'Dark' }} to="/gestionProduits">
+                    Catalogue
+                </Link>
             </li>
             <li className="nav-link disabled">
                 {/* <Link style={{ color: 'white' }} to="/GestionClients"> */}
