@@ -30,15 +30,14 @@ const Formulaire = (props) => {
     return (
         <>
             <div>
-                Formulaire
+                Ajouter un produit
             </div>
             <fieldset>
                 <legend>Nouveau produit</legend>
                 <input type="text" name="nom" value={produit.libelle} onChange={handleChange} /><br />
-                <input type="text" name="prix" value={produit.prixUnitaire} onChange={handleChange} /><br />
                 <input type="text" name="description" value={produit.description} onChange={handleChange} /><br />
                 <button className='btn btn-success' onClick={handleSubmit}>Valider</button>
-                <Link className='btn btn-warning' to="/">Retour</Link>
+                <Link className='btn btn-warning' to="/gestionProduits">Retour</Link>
             </fieldset>
         </>
     );
