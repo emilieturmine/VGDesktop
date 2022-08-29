@@ -73,20 +73,21 @@ const Formulaire = (props) => {
                     <div class="form-group">
 
                         <label htmlFor="fournisseur">Fournisseur:</label>
-                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChange} required /><br />
+                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChange} required ><br />
 
-                        {props.data.fournisseurs.map((fournisseurs, index) => (
-                            <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
+                            {props.data.fournisseurs.map((fournisseurs, index) => (
+                                <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
 
-                        ))}
+                            ))}
+                        </select>
                     </div>
                     <div class="form-group">
                         <label htmlFor="ssCategorie">Sous-categorie:</label>
-                        <select className="form-control mt-3" name="ssCategorie" placeholder="Choisissez la catégorie" value={produit.ssCategorie} onChange={handleChange} required /><br />
-                        {props.data.ssCategories.map((ssCategories, index) => (
-                            <option key={ssCategories.id} className="text-center">{ssCategories.nom}</option>
+                        <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChange} required ><br />
+                            {props.data.ssCategories.map((ssCategories, index) => (
+                                <option key={ssCategories.id} placeholder="Choisissez la catégorie" className="text-center">{ssCategories.nom}</option>
 
-                        ))}
+                            ))}</select>
                     </div>
 
 
