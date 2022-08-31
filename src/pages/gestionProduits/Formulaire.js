@@ -6,18 +6,19 @@ const Formulaire = (props) => {
 
     const [produit, setProduit] = useState(
         {
-            reference: "",
-            libelle: "",
-            description: "",
-            prixUnitaire: "0",
-            photo: "",
-            stock: 0,
-            tva: "0",
-            prixAchat: "0",
-            fournisseur: "",
-            ssCategorie: "",
+            reference: "654654",
+            libelle: "test test",
+            description: "test test",
+            prixUnitaire: "12",
+            photo: "toto.jpg",
+            stock: 10,
+            tva: "20",
+            prixAchat: "500",
+            fournisseur: "/api/fournisseurs/1",
+            ssCategorie: "/api/ss_categories/1",
         }
     );
+
     const navigate = useNavigate();
 
 
@@ -34,6 +35,7 @@ const Formulaire = (props) => {
     }
 
     const handleSubmit = (evt) => {
+
         props.onChange(produit);
 
         navigate("/gestionProduits");
@@ -68,12 +70,12 @@ const Formulaire = (props) => {
                     <input type="text" className="form-control mt-3" name="tva" placeholder=' Le taux de TVA du produit' value={produit.tva} onChange={handleChange} required /><br />
 
                     <label htmlFor="prixAchat">Prix d'achat:</label>
-                    <input type="text" className="form-control mt-3" name="prixAchat" placeholder="Le prix d'achat" value={produit.tva} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="prixAchat" placeholder="Le prix d'achat" value={produit.prixAchat} onChange={handleChange} required /><br />
 
-                    <div class="form-group">
+                    <div className="form-group">
 
                         <label htmlFor="fournisseur">Fournisseur:</label>
-                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChange} required ><br />
+                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChange} required >
 
                             {props.data.fournisseurs.map((fournisseurs, index) => (
                                 <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
@@ -81,9 +83,9 @@ const Formulaire = (props) => {
                             ))}
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                         <label htmlFor="ssCategorie">Sous-categorie:</label>
-                        <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChange} required ><br />
+                        <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChange} required >
                             {props.data.ssCategories.map((ssCategories, index) => (
                                 <option key={ssCategories.id} placeholder="Choisissez la catégorie" className="text-center">{ssCategories.nom}</option>
 
