@@ -1,4 +1,4 @@
-
+import { Entete } from '../../components/Entete';
 import React from 'react';
 
 import { useState, useEffect } from 'react';
@@ -48,8 +48,7 @@ const Formulaire1 = (props) => {
     return (
 
         <div className="container">
-            <Entete />
-            <Navigation />
+
             <div className="row">
                 <form className="was-validated col-12  text-info">
                     <h1 className="form-group text-center mt-5">Creer un produit</h1>

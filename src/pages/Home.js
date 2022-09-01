@@ -10,8 +10,6 @@ import React from 'react';
 const Home = (props) => {
     return (
         <div>
-            <Entete />
-            <Navigation />
             <div className="container">
                 <div className="row">
                     <article className="col-sm-12">

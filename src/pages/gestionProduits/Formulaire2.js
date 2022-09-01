@@ -23,8 +23,8 @@ const Formulaire2 = (props) => {
     console.log(id);
 
     useEffect(() => {
-        console.log("change id")
-        fetchSync('https://127.0.0.1:8000/api/produits/' + id, 'patch').then((data) => setProduit(data));
+        // console.log("change id")
+        fetchSync('https://127.0.0.1:8000/api/produits/' + id, 'get').then((data) => setProduit(data));
 
     },
         [id]);
@@ -88,9 +88,10 @@ const Formulaire2 = (props) => {
 
                         <label htmlFor="fournisseur">Fournisseur:</label>
                         <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChangeUpdateProduit} required >
-                            <option value="defaultValue" selected>Choisissez le fournisseur.</option>
                             {props.data.fournisseurs.map((fournisseurs, index) => (
-                                <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
+                                <option key={fournisseurs.id} className="text-center" value={'/api/fournisseurs/' + fournisseurs.id}>
+                                    {fournisseurs.nom}
+                                </option>
 
                             ))}
                         </select>
@@ -98,10 +99,10 @@ const Formulaire2 = (props) => {
                     <div className="form-group">
                         <label htmlFor="ssCategorie">Sous-categorie:</label>
                         <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChangeUpdateProduit} required >
-                            <option value="defaultValue" selected>Choisissez la sous categorie.</option>
                             {props.data.ssCategories.map((ssCategories, index) => (
-                                <option key={ssCategories.id} placeholder="Choisissez la catégorie" className="text-center">{ssCategories.nom}</option>
-
+                                <option key={ssCategories.id} className="text-center" value={'/api/ss_categories/' + ssCategories.id}>
+                                    {ssCategories.nom}
+                                </option>
                             ))}</select>
                     </div>
                     <button className='btn btn-success mt-5' type="button" onClick={handleSubmit}>Valider</button>

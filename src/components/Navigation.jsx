@@ -11,9 +11,9 @@ const Navigation = () => {
                 </Link>
             </li>
             <li className="nav-link">
-                {/* <Link style={{ color: 'white' }} to="/GestionCommandes"> */}
-                Commandes
-                {/* </Link> */}
+                <Link style={{ color: 'white' }} to="/GestionCommandes">
+                    Commandes
+                </Link>
             </li>
             <li className="nav-link">
                 <Link style={{ color: 'Dark' }} to="/gestionProduits">
@@ -21,22 +21,22 @@ const Navigation = () => {
                 </Link>
             </li>
             <li className="nav-link disabled">
-                {/* <Link style={{ color: 'white' }} to="/GestionClients"> */}
-                Clients
-                {/* </Link> */}
+                <Link style={{ color: 'white' }} to="/GestionClients">
+                    Clients
+                </Link>
             </li>
             <li className="nav-link disabled">
-                {/* <Link style={{ color: 'white' }} to="/Sav"> */}
-                SAV
-                {/* </Link> */}
+                <Link style={{ color: 'white' }} to="/Sav">
+                    SAV
+                </Link>
             </li>
             <li className="nav-link disabled">
-                {/* <Link style={{ color: 'white' }} to="/TableauBord"> */}
-                Tableau de bord
-                {/* </Link> */}
+                <Link style={{ color: 'white' }} to="/TableauBord">
+                    Tableau de bord
+                </Link>
             </li>
-            <li className="Date">Date</li>
-            <li className="Heure">heure</li>
+            <li className="nav-link disabled">Date</li>
+            <li className="nav-link disabled">heure</li>
 
 
         </nav>

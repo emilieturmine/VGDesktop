@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
 const Entete = () => {
 	return (
 		<div >
