@@ -3,10 +3,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ListeProduits = (props) => {
-    const handleClick = () => { }
+    const handleClickUpdateProduit = (p) => {
+        console.log("click sur produit")
+        console.log(p);
+        props.onClick(p)
+    }
 
     return (
         <>
+
             <h1 className=" text-info text-center mt-5">Liste des produits : </h1>
             <button
                 className=" text-center btn btn-success mt-5
@@ -37,8 +42,18 @@ const ListeProduits = (props) => {
 
                             <td>   <img src={"https://localhost:8000/imagesVG/propho/" + listeProduit.photo} alt={listeProduit.libelle} style={{ width: "150px", height: "150px" }} /></td>
                             <td>
-                                <button className="bg-info text-white mt-5">Details</button>
-                                <button className="bg-warning text-white ml-3 mt-5">Modifier</button>
+                                <button className="bg-info text-white mt-5"><Link
+                                    to={"/Details/" + listeProduit.id}
+                                    key={listeProduit.id}
+                                    className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
+                                    onClick={() => { handleDetailClick(produit) }}
+                                ></Link>Details</button>
+                                <button className="bg-warning text-white ml-3 mt-5">  <Link
+                                    to={"/update/" + listeProduit.id}
+                                    key={listeProduit.id}
+                                    className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
+                                    onClick={() => { handleClickUpdateProduit(produit) }}
+                                >Modifier</Link></button>
                                 <button className="bg-danger text-white mt-5">Supprimer</button>
 
                             </td>

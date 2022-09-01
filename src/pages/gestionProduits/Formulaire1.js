@@ -1,28 +1,31 @@
+
+import React from 'react';
+
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 
-const Formulaire = (props) => {
+const Formulaire1 = (props) => {
 
     const [produit, setProduit] = useState(
         {
-            reference: "654654",
-            libelle: "test test",
-            description: "test test",
-            prixUnitaire: "12",
-            photo: "toto.jpg",
-            stock: 10,
-            tva: "20",
-            prixAchat: "500",
-            fournisseur: "/api/fournisseurs/1",
-            ssCategorie: "/api/ss_categories/1",
+            reference: "",
+            libelle: "",
+            description: "",
+            prixUnitaire: "",
+            photo: "",
+            stock: 0,
+            tva: "",
+            prixAchat: "",
+            fournisseur: "",
+            ssCategorie: "",
         }
     );
 
     const navigate = useNavigate();
 
 
-    const handleChange = (evt) => {
+    const handleChangeNewProduit = (evt) => {
         let p = { ...produit };
         // if (evt.target.name == "reference") {
         //    p.reference = evt.target.value; 
@@ -43,40 +46,43 @@ const Formulaire = (props) => {
 
 
     return (
+
         <div className="container">
+            <Entete />
+            <Navigation />
             <div className="row">
                 <form className="was-validated col-12  text-info">
                     <h1 className="form-group text-center mt-5">Creer un produit</h1>
 
                     <label htmlFor="reference">Reference:</label>
-                    <input type="text" className="form-control mt-5" name="reference" placeholder='La reference du produit' value={produit.reference} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-5" name="reference" placeholder='La reference du produit' value={produit.reference} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="libelle">Libelle:</label>
-                    <input type="text" className="form-control mt-3" name="libelle" placeholder='Le libelle du produit' value={produit.libelle} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="libelle" placeholder='Le libelle du produit' value={produit.libelle} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="description">Description:</label>
-                    <textarea type="textarea" className="form-control mt-3" name="description" placeholder='La description du produit' value={produit.description} onChange={handleChange} required /><br />
+                    <textarea type="textarea" className="form-control mt-3" name="description" placeholder='La description du produit' value={produit.description} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="prixUnitaire">Prix Unitaire:</label>
-                    <input type="text" className="form-control mt-3" name="prixUnitaire" placeholder='Le prix unitaire du produit' value={produit.prixUnitaire} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="prixUnitaire" placeholder='Le prix unitaire du produit' value={produit.prixUnitaire} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="photo">Photo:</label>
-                    <input type="text" className="form-control mt-3" name="photo" placeholder='La photo du produit' value={produit.photo} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="photo" placeholder='La photo du produit' value={produit.photo} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="stock">Stock:</label>
-                    <input type="number" className="form-control mt-3" name="stock" placeholder='Le stock du produit' value={produit.stock} onChange={handleChange} required /><br />
+                    <input type="number" className="form-control mt-3" name="stock" placeholder='Le stock du produit' value={produit.stock} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="tva">TVA:</label>
-                    <input type="text" className="form-control mt-3" name="tva" placeholder=' Le taux de TVA du produit' value={produit.tva} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="tva" placeholder=' Le taux de TVA du produit' value={produit.tva} onChange={handleChangeNewProduit} required /><br />
 
                     <label htmlFor="prixAchat">Prix d'achat:</label>
-                    <input type="text" className="form-control mt-3" name="prixAchat" placeholder="Le prix d'achat" value={produit.prixAchat} onChange={handleChange} required /><br />
+                    <input type="text" className="form-control mt-3" name="prixAchat" placeholder="Le prix d'achat" value={produit.prixAchat} onChange={handleChangeNewProduit} required /><br />
 
                     <div className="form-group">
 
                         <label htmlFor="fournisseur">Fournisseur:</label>
-                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChange} required >
-
+                        <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChangeNewProduit} required >
+                            <option value="" selected>Choisissez le fournisseur.</option>
                             {props.data.fournisseurs.map((fournisseurs, index) => (
                                 <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
 
@@ -85,22 +91,13 @@ const Formulaire = (props) => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="ssCategorie">Sous-categorie:</label>
-                        <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChange} required >
+                        <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChangeNewProduit} required >
+                            <option value="" selected>Choisissez la sous categorie.</option>
                             {props.data.ssCategories.map((ssCategories, index) => (
                                 <option key={ssCategories.id} placeholder="Choisissez la catégorie" className="text-center">{ssCategories.nom}</option>
 
                             ))}</select>
                     </div>
-
-
-
-
-
-
-
-
-
-
                     <button className='btn btn-success mt-5' type="button" onClick={handleSubmit}>Valider</button>
 
 
@@ -118,4 +115,4 @@ const Formulaire = (props) => {
     );
 }
 
-export { Formulaire };
+export { Formulaire1 };
