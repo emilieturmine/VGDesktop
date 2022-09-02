@@ -27,11 +27,7 @@ const Details = (props) => {
 
     },
         [id]);
-    const handleClickDeleteProduit = (p) => {
-        console.log("click sur produit")
-        console.log(p);
-        props.onClick(p)
-    }
+
     console.log(id);
     return (
         <div>
@@ -69,7 +65,7 @@ const Details = (props) => {
 
 
                             </div>
-                            <button className="bg-danger text-white mt-5" onClick={handleClickDeleteProduit}>Supprimer</button>
+
                         </article>
 
                     </div>

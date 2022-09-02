@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../css/index.css';import {Home} from '../pages/Home';
-import { fetchSync } from './fetchSync';
+import { fetchSync, fetchActionSync } from './fetchSync';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import { ListeProduits } from '../pages/gestionProduits/ListeProduits';
@@ -11,6 +11,7 @@ import { Formulaire2 } from '../pages/gestionProduits/Formulaire2';
 import { Entete } from '../components/Entete';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
+import Delete from '../pages/gestionProduits/Delete';
 //Creation d'une fonction composant
 const App = (props) => {
     // Déclaration des variables d'état (Renvoie une valeur d’état local et une fonction pour la mettre à jour.)
@@ -92,13 +93,13 @@ const App = (props) => {
         // Pour supprimer un produit
         const handleClickDeleteProduit = (produit) => {
 
-            fetchSync('https://127.0.0.1:8000/api/produits/' + produit.id, 'delete', produit).then( (retour) => {
+            fetchActionSync('https://127.0.0.1:8000/api/produits/' + produit.id, 'delete').then( (retour) => {
 
-                fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) =>  { 
-                    setData1(data);
+                 fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) =>  { 
+                     setData1(data);
             
              
-                });
+                 });
             });
         }
     
@@ -114,14 +115,15 @@ const App = (props) => {
                 <Route path="gestionProduits/" element={<ListeProduits data={data1} />} />
                     <Route path="/add" element={<Formulaire1 data={dataFP} onChange={handleChangeNewProduit} />} />
                     <Route path="/update/:id" element={<Formulaire2 data={dataFP} onChange={handleChangeUpdateProduit} />} />
-                    <Route path="/Details/:id" element={<Details data={data4} onClick={handleClickDeleteProduit} />} />
+                    <Route path="/Details/:id" element={<Details data={data4}  />} />
+                    <Route path="/delete/:id" element={<Delete data={data1} onClick={handleClickDeleteProduit} />} />
                     
                                 {/* path="*" fonctionne si jamais l'url ne correspond à rien de  declaré au dessus */}
             {/* <Route path="*" element={<Home />}/> */}
 
             </Routes>
 
-            <Footer />
+           
 
         </BrowserRouter>
     );

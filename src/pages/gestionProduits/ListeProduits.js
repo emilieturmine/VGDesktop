@@ -43,7 +43,7 @@ const ListeProduits = (props) => {
                                         to={"/Details/" + listeProduit.id}
                                         key={listeProduit.id}
                                         className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
-                                    // onClick={() => { handleDetailClick(produit) }}
+
                                     >
                                         Details
                                     </Link>
@@ -53,12 +53,19 @@ const ListeProduits = (props) => {
                                         to={"/update/" + listeProduit.id}
                                         key={listeProduit.id}
                                         className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
-                                    // onClick={() => { handleClickUpdateProduit(produit) }}
+
                                     >
                                         Modifier
                                     </Link>
                                 </button>
+                                <button className="bg-danger text-white mt-5" > <Link
+                                    to={"/delete/" + listeProduit.id}
+                                    key={listeProduit.id}
+                                    className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
 
+                                >Supprimer
+                                </Link>
+                                </button>
 
                             </td>
                         </tr>

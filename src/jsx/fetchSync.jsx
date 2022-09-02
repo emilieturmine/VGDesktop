@@ -12,5 +12,17 @@ async function fetchSync (uri, method, body = null) {
     return data;
 }
 
+async function fetchActionSync (uri, method, body = null) {
+    const response = await fetch(uri, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: body?JSON.stringify(body):null
+    });
 
-export {fetchSync};
+    return null;
+}
+
+export {fetchSync, fetchActionSync};
