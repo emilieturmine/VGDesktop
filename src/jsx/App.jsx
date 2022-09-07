@@ -12,16 +12,27 @@ import { Entete } from '../components/Entete';
 import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import Delete from '../pages/gestionProduits/Delete';
+import { ListeCommande } from '../pages/gestionCommande/ListeCommande';
+import { DetailCommande } from '../pages/gestionCommande/DetailCommande';
+
 //Creation d'une fonction composant
 const App = (props) => {
     // Déclaration des variables d'état (Renvoie une valeur d’état local et une fonction pour la mettre à jour.)
-
-    const [data1, setData1] = useState([]);
-    const [data2, setData2] = useState([]);
-    const [data3, setData3] = useState([]);
-    const [data4, setData4] = useState([]);
-
-
+        //produit
+            const [data1, setData1] = useState([]);
+        //ss categorie
+            const [data2, setData2] = useState([]);
+        //fournisseur
+            const [data3, setData3] = useState([]);
+        //details produits
+            const [data4, setData4] = useState([]);
+        //commandes
+            const [data5, setData5] = useState([]);
+        //clients
+            const [data6, setData6] = useState([]);
+        //Ligne de commande
+             const [data7, setData7] = useState([]);
+            
     // Declaration de variables plus complexes
         //Pour le formulaire 1 (ajout produit)
         
@@ -30,35 +41,43 @@ const App = (props) => {
             ssCategories : data2,
             fournisseurs: data3,
         }
-
+        // pour la partie gestion de commande
+        const dataGC = {
+            produits: data1,
+            commandes : data5,
+            clients: data6,
+        }
 // Declaration des hooks d'effets
-    //pour la page d'home    
-    useEffect(() => {
-        fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
-    }, [])
-     //pour la page d'ListeProduits    
-     useEffect(() => {
-        fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
-    }, [])
-    //Pour le formulaire 1 (ajout produit)
-    useEffect(() => {
-        fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
-        fetchSync('https://127.0.0.1:8000/api/ss_categories', 'get').then( (data) => setData2(data) );
-        fetchSync('https://127.0.0.1:8000/api/fournisseurs', 'get').then( (data) => setData3(data) );
-    }, [])
+     //Pour la partie Gestion Commande
+        //pour la page ListeCommande    
+        useEffect(() => {
+            fetchSync('https://127.0.0.1:8000/api/commandes', 'get').then( (data) => setData5(data) );
+            fetchSync('https://127.0.0.1:8000/api/users', 'get').then( (data) => setData6(data) );
+        }, [])
+        //pour la page ListeCommande    
+        useEffect(() => {
+            fetchSync('https://127.0.0.1:8000/api/commandes', 'get').then( (data) => setData5(data) );
+            // fetchSync('https://127.0.0.1:8000/api/commandes/{id}', 'get').then( (data) => setData7(data) );
+        }, [])
 
-     //Pour le formulaire 2 (modif produit)
-     useEffect(() => {
-        fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
-        fetchSync('https://127.0.0.1:8000/api/ss_categories', 'get').then( (data) => setData2(data) );
-        fetchSync('https://127.0.0.1:8000/api/fournisseurs', 'get').then( (data) => setData3(data) );
-    }, [])
-    //Pour la page detail
-    useEffect(() => {
-        fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
-        fetchSync('https://127.0.0.1:8000/api/produits/{id}', 'get').then( (data) => setData4(data) );
-        
-    }, [])
+    //Pour la partie Gestion Produit
+        //pour la page ListeProduits    
+            useEffect(() => {
+                fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
+            }, [])
+    
+        //Pour le formulaire 1 (ajout produit) et 2 (modif produit)
+            useEffect(() => {
+                fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
+                fetchSync('https://127.0.0.1:8000/api/ss_categories', 'get').then( (data) => setData2(data) );
+                fetchSync('https://127.0.0.1:8000/api/fournisseurs', 'get').then( (data) => setData3(data) );
+            }, [])
+    
+        //Pour la page detail
+            useEffect(() => {
+                fetchSync('https://127.0.0.1:8000/api/produits', 'get').then( (data) => setData1(data) );
+                // fetchSync('https://127.0.0.1:8000/api/produits/{id}', 'get').then( (data) => setData4(data) );
+            }, [])
 
     
 // Declaration des evenements 
@@ -112,6 +131,11 @@ const App = (props) => {
             <Routes>
 
             <Route path="/" element={<Home data={data1}/>} />
+                <Route path="gestionCommande/" element={<ListeCommande data={dataGC} />} />
+                    <Route path="/DetailCommande/:id" element={<DetailCommande data={data7}  />} />
+                 
+                
+                
                 <Route path="gestionProduits/" element={<ListeProduits data={data1} />} />
                     <Route path="/add" element={<Formulaire1 data={dataFP} onChange={handleChangeNewProduit} />} />
                     <Route path="/update/:id" element={<Formulaire2 data={dataFP} onChange={handleChangeUpdateProduit} />} />

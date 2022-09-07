@@ -11,7 +11,7 @@ const Navigation = () => {
                 </Link>
             </li>
             <li className="nav-link">
-                <Link style={{ color: 'white' }} to="/GestionCommandes">
+                <Link style={{ color: 'white' }} to="/gestionCommande">
                     Commandes
                 </Link>
             </li>
