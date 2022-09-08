@@ -33,18 +33,36 @@ const ListeCommande = (props) => {
                             <td>{listeCommande.total}</td>
                             <td>{listeCommande.user.nom + ' ' + listeCommande.user.prenom}</td>
                             <td>
-                                <button className="bg-info text-white mt-5">
+                                <button className=" text-white mt-5 mr-5">
                                     <Link
                                         to={"/DetailCommande/" + listeCommande.id}
                                         key={listeCommande.id}
                                         className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
 
                                     >
-                                        Details Commande
+                                        Commande
                                     </Link>
                                 </button>
 
+                                <button className="text-white mt-5 mr-5">
+                                    <Link
+                                        to={"/DetailLivraison/" + listeCommande.id}
+                                        key={listeCommande.id}
+                                        className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
 
+                                    >
+                                        Livraison
+                                    </Link></button>
+                                <button className="text-white mt-5">
+                                    <Link
+                                        to={"/DetailClient/" + listeCommande.id}
+                                        key={listeCommande.id}
+                                        className="col-6 col-sm-3 justify-content-space-between text-center mt-5 "
+
+                                    >
+                                        Client
+                                    </Link>
+                                </button>
                             </td>
                         </tr>
                     )}

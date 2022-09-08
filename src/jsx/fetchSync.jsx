@@ -1,4 +1,6 @@
 async function fetchSync (uri, method, body = null) {
+    uri = 'https://127.0.0.1:8000' + uri;
+    // uri = 'https://emilie.amorce.org' + uri;
     const response = await fetch(uri, {
         method: method,
         headers: {
@@ -13,6 +15,8 @@ async function fetchSync (uri, method, body = null) {
 }
 
 async function fetchActionSync (uri, method, body = null) {
+    uri = 'https://127.0.0.1:8000' + uri;
+    // uri = 'https://emilie.amorce.org' + uri;
     const response = await fetch(uri, {
         method: method,
         headers: {

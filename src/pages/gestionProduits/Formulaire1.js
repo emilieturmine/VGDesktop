@@ -81,7 +81,7 @@ const Formulaire1 = (props) => {
 
                         <label htmlFor="fournisseur">Fournisseur:</label>
                         <select className="form-control mt-3" name="fournisseur" placeholder="Choisissez le nom du fournisseur" value={produit.fournisseur} onChange={handleChangeNewProduit} required >
-                            <option value="" selected>Choisissez le fournisseur.</option>
+                            <option value="Choisissez" selected>Choisissez le fournisseur.</option>
                             {props.data.fournisseurs.map((fournisseurs, index) => (
                                 <option key={fournisseurs.id} className="text-center">{fournisseurs.nom}</option>
 
@@ -91,7 +91,7 @@ const Formulaire1 = (props) => {
                     <div className="form-group">
                         <label htmlFor="ssCategorie">Sous-categorie:</label>
                         <select className="form-control mt-3" name="ssCategorie" value={produit.ssCategorie} onChange={handleChangeNewProduit} required >
-                            <option value="" selected>Choisissez la sous categorie.</option>
+                            <option value="Choisissez" selected>Choisissez la sous categorie.</option>
                             {props.data.ssCategories.map((ssCategories, index) => (
                                 <option key={ssCategories.id} placeholder="Choisissez la catégorie" className="text-center">{ssCategories.nom}</option>
 

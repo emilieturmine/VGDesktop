@@ -23,7 +23,7 @@ const Details = (props) => {
 
     useEffect(() => {
         console.log("change id")
-        fetchSync('https://127.0.0.1:8000/api/produits/' + id, 'get').then((data) => setProd(data));
+        fetchSync('/api/produits/' + id, 'get').then((data) => setProd(data));
 
     },
         [id]);

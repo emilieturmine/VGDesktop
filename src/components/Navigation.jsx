@@ -20,8 +20,8 @@ const Navigation = () => {
                     Catalogue
                 </Link>
             </li>
-            <li className="nav-link disabled">
-                <Link style={{ color: 'white' }} to="/GestionClients">
+            <li className="nav-link ">
+                <Link style={{ color: 'white' }} to="/gestionClients">
                     Clients
                 </Link>
             </li>
