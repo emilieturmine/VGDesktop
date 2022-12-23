@@ -71,7 +71,7 @@ import {ListeClients} from '../pages/gestionClients/ListeClients';
                     fetchSync('/api/commandes', 'get').then( (data) => setData5(data) );
                 }, [])
         
-    //Pour la partie Gestion Produit
+    //Pour la partie Gestion Clients
 
                 //pour la page ListeClients    
 
